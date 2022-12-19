@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" prefHeight="648.0" prefWidth="506.0" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.parking.SecondaryController">
+    <children>
+        <Label text="System rekomendacji parkingu">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font></Label>
+      <HBox alignment="CENTER" prefHeight="10.0" prefWidth="466.0">
+         <children>
+            <Label text="Wybrane miasto: ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="selectedCity" text="\$city">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Label prefHeight="34.0" prefWidth="369.0" text="Wprowadź współrzędne destynacji w celu rekomendacji najbliższego miejsca parkingowego według wymagań" wrapText="true" />
+      <HBox alignment="CENTER" prefHeight="38.0" prefWidth="38.0">
+         <children>
+            <Label text="CordX " />
+            <TextField />
+            <Label text=" CordY " />
+            <TextField />
+         </children>
+      </HBox>
+      <Label text="Czy chcesz parking dla inwalidów?" />
+      <GridPane alignment="CENTER" prefHeight="0.0" prefWidth="464.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <RadioButton mnemonicParsing="false" text="Tak">
+               <toggleGroup>
+                  <ToggleGroup fx:id="rGroup1" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Nie" toggleGroup="$rGroup1" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+      <Label text="Czy chcesz parking płatny?" />
+      <GridPane prefHeight="0.0" prefWidth="466.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <RadioButton mnemonicParsing="false" text="Tak">
+               <toggleGroup>
+                  <ToggleGroup fx:id="rGroup2" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Nie" toggleGroup="$rGroup2" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+      <Label text="Czy chcesz parking strzeżony?" />
+      <GridPane prefHeight="0.0" prefWidth="466.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <RadioButton mnemonicParsing="false" text="Tak">
+               <toggleGroup>
+                  <ToggleGroup fx:id="rGroup3" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Nie" toggleGroup="$rGroup3" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+      <Label text="Czy chcesz parking z co najmniej 15 miejscami wolnymi?" />
+      <GridPane prefHeight="0.0" prefWidth="466.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <RadioButton mnemonicParsing="false" text="Tak">
+               <toggleGroup>
+                  <ToggleGroup fx:id="rGroup4" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Nie" toggleGroup="$rGroup4" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+        <Button fx:id="secondaryButton" onAction="#switchToPrimary" text="Zatwierdź" />
+    </children>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+</VBox>
