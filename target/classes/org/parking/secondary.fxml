@@ -11,6 +11,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
 
+<?import org.parking.LimitedTextField?>
 <VBox alignment="CENTER" prefHeight="648.0" prefWidth="506.0" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.parking.SecondaryController">
     <children>
         <Label text="System rekomendacji parkingu">
@@ -34,10 +35,10 @@
       <Label prefHeight="34.0" prefWidth="369.0" text="Wprowadź współrzędne destynacji w celu rekomendacji najbliższego miejsca parkingowego według wymagań" wrapText="true" />
       <HBox alignment="CENTER" prefHeight="38.0" prefWidth="38.0">
          <children>
-            <Label text="CordX " />
-            <TextField />
-            <Label text=" CordY " />
-            <TextField />
+            <Label text="CordX "/>
+            <LimitedTextField fx:id="cordX" />
+            <Label text=" CordY "/>
+            <LimitedTextField fx:id="cordY"/>
          </children>
       </HBox>
       <Label text="Czy chcesz parking dla inwalidów?" />

@@ -1,14 +1,16 @@
 package org.parking;
 
-import java.net.URL;
-import java.util.*;
-import java.util.stream.Collectors;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class SecondaryController implements Initializable {
 
@@ -18,14 +20,16 @@ public class SecondaryController implements Initializable {
     @FXML
     private ToggleGroup rGroup1, rGroup2, rGroup3, rGroup4;
 
-    private static RadioButton selected1, selected2, selected3, selected4;
+    @FXML
+    private LimitedTextField cordX, cordY;
+
 
     public ArrayList<Boolean> getSelected(){
         ArrayList<Boolean> buttons = new ArrayList<>();
-        selected1 = (RadioButton) rGroup1.getSelectedToggle();
-        selected2 = (RadioButton) rGroup2.getSelectedToggle();
-        selected3 = (RadioButton) rGroup3.getSelectedToggle();
-        selected4 = (RadioButton) rGroup4.getSelectedToggle();
+        RadioButton selected1 = (RadioButton) rGroup1.getSelectedToggle();
+        RadioButton selected2 = (RadioButton) rGroup2.getSelectedToggle();
+        RadioButton selected3 = (RadioButton) rGroup3.getSelectedToggle();
+        RadioButton selected4 = (RadioButton) rGroup4.getSelectedToggle();
         Collections.addAll(buttons,selected1.getText().equals("Tak"),selected2.getText().equals("Tak")
                 ,selected3.getText().equals("Tak"),selected4.getText().equals("Tak"));
         return buttons;
@@ -41,8 +45,9 @@ public class SecondaryController implements Initializable {
 
         var choices = getSelected();
 
-        int cordX = 32;
-        int cordY = 20;
+        int cordX = Integer.parseInt(this.cordX.getText());
+        int cordY = Integer.parseInt(this.cordY.getText());
+        System.out.println(cordX + " " + cordY);
 
 
         var satisfiable = parkings.stream()
@@ -63,5 +68,6 @@ public class SecondaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         selectedCity.setText(PrimaryController.getUser().getSelectedCity());
+        cordX.setRestrict("[0-9]");
     }
 }
