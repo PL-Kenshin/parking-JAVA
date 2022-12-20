@@ -24,6 +24,11 @@ public class ResultController implements Initializable {
 
     private static ObservableList<test> items = FXCollections.observableArrayList();
 
+    @FXML
+    private void switchToFirst() throws IOException {
+        App.setRoot("primary");
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         topList.setItems(items);

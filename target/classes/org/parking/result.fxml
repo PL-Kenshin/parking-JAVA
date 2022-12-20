@@ -1,38 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.parking.ResultController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.parking.ResultController">
     <children>
         <Label text="System rekomendacji parkingu">
             <font>
                 <Font name="System Bold" size="32.0" />
             </font></Label>
       <Label text="Lista najbardziej dopasowanych parkingów:" />
-      <TableView prefHeight="200.0" prefWidth="200.0" fx:id="topList">
+      <TableView fx:id="topList" prefHeight="200.0" prefWidth="200.0">
         <columns>
-            <TableColumn prefWidth="75.0" text="ID_Parkingu" >
+            <TableColumn prefWidth="75.0" text="ID_Parkingu">
                 <cellValueFactory>
                     <PropertyValueFactory property="id" />
                 </cellValueFactory>
             </TableColumn>
 
-            <TableColumn prefWidth="75.0" text="Wynik" >
+            <TableColumn prefWidth="75.0" text="Wynik">
                 <cellValueFactory>
                     <PropertyValueFactory property="score" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn prefWidth="75.0" text="CordX" >
+            <TableColumn prefWidth="75.0" text="CordX">
                 <cellValueFactory>
                     <PropertyValueFactory property="cordX" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn prefWidth="75.0" text="CordY" >
+            <TableColumn prefWidth="75.0" text="CordY">
                 <cellValueFactory>
                     <PropertyValueFactory property="cordY" />
                 </cellValueFactory>
@@ -42,6 +41,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <Button fx:id="resultButton" onAction="#switchToFirst" text="Powrót" />
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
