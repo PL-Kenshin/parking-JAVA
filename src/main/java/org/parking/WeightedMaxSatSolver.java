@@ -17,7 +17,9 @@ import java.util.stream.Collectors;
 public class WeightedMaxSatSolver {
     private WeightedMaxSatDecorator weightedMaxSatDecorator;
     private ModelIterator solver;
+    private int varRange;
     WeightedMaxSatSolver(int varRange, int ExpectedNumberOfClauses){
+        this.varRange = varRange;
         weightedMaxSatDecorator = new WeightedMaxSatDecorator(
                 SolverFactory.newDefault());
         solver = new ModelIterator(
@@ -26,7 +28,8 @@ public class WeightedMaxSatSolver {
         solver.setExpectedNumberOfClauses(ExpectedNumberOfClauses);
     }
 
-    public void addClause(int weight,int[] clause) throws ContradictionException {
+    public void addClause(int weight,int id) throws ContradictionException {
+        var clause = generateClausule(id);
         weightedMaxSatDecorator.addSoftClause(weight,new VecInt(clause));
     }
 
@@ -36,6 +39,19 @@ public class WeightedMaxSatSolver {
         } else {
             return Optional.empty();
         }
+    }
+
+    private int[] generateClausule(int id){
+            int[] vars = new int[varRange];
+            for(int i=0;i<varRange;i++){
+                if(i==id){
+                    vars[i]=i+1;
+                }
+                else{
+                    vars[i]=-(i+1);
+                }
+            }
+            return vars;
     }
 
 }

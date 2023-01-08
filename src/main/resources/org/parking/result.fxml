@@ -32,16 +32,6 @@
                     <PropertyValueFactory property="zoneId" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn prefWidth="75.0" text="CordX" >
-                <cellValueFactory>
-                    <PropertyValueFactory property="cordX" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn prefWidth="75.0" text="CordY" >
-                <cellValueFactory>
-                    <PropertyValueFactory property="cordY" />
-                </cellValueFactory>
-            </TableColumn>
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

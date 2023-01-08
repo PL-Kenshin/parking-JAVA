@@ -17,9 +17,22 @@ public class ResultController implements Initializable {
     @FXML
     private TableView topList;
 
-    public static void  initTable(List<ParkingLot> parkings,List<ParkingLot> allParkings ,List<Zone> zones, int x, int y){
+    public static void  initTable(List<ParkingLot> parkings,List<ParkingLot> allParkings ,List<Zone> zones, int x, int y, List results){
         for (var parking:parkings) {
-            items.add(new test(parking,x,y));
+            Zone zone =zones.get(parking.getZoneId());
+            Integer score = Math.toIntExact(
+                    Math.round(
+                        (
+                                1000 * zone.getAttractivenessRatio()
+                        )
+                                /
+                        (
+                                Math.abs(x - zone.getCordX()) +
+                                Math.abs(y - zone.getCordY())
+                        )
+                    )
+            );
+            items.add(new test(parking, score));
         }
         MapGenerator.main(parkings,allParkings, zones, x,y);
     }
@@ -29,8 +42,6 @@ public class ResultController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         topList.setItems(items);
-
-
     }
 
     public void switchToPrimary() throws IOException {

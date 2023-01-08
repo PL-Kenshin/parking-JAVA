@@ -64,8 +64,18 @@ public class SecondaryController implements Initializable {
                 .sorted(Comparator.comparingInt(a -> a.getDistanceTo(cordX, cordY)))
                 .collect(Collectors.toList());
 
+        WeightedMaxSatSolver solver = new WeightedMaxSatSolver(satisfiable.size(), satisfiable.size());
+        for(int i=0;i<satisfiable.size();i++){
+            Zone zone = zones.get(satisfiable.get(i).getZoneId());
+            solver = new WeightedMaxSatSolver(satisfiable.size(), satisfiable.size());
+            solver.addClause(
+                    (int) Math.round(100 * zone.getAttractivenessRatio()/Math.abs(cordX-zone.getCordX())+
+                            Math.abs(cordY-zone.getCordY())),i);
+        }
 
-        ResultController.initTable(satisfiable,parkings,zones,cordX,cordY);
+        var result = solver.model().get();
+
+        ResultController.initTable(satisfiable,parkings,zones,cordX,cordY,result);
 
         App.setRoot("result");
     }
