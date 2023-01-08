@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.parking.ResultController">
+    <children>
+        <Label text="System rekomendacji parkingu">
+            <font>
+                <Font name="System Bold" size="32.0" />
+            </font></Label>
+      <Label text="Lista najbardziej dopasowanych parkingów:" />
+      <TableView prefHeight="200.0" prefWidth="200.0" fx:id="topList">
+        <columns>
+            <TableColumn prefWidth="75.0" text="ID_Parkingu" >
+                <cellValueFactory>
+                    <PropertyValueFactory property="id" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn prefWidth="75.0" text="Wynik" >
+                <cellValueFactory>
+                    <PropertyValueFactory property="score" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="75.0" text="Id Strefy" >
+                <cellValueFactory>
+                    <PropertyValueFactory property="zoneId" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="75.0" text="CordX" >
+                <cellValueFactory>
+                    <PropertyValueFactory property="cordX" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="75.0" text="CordY" >
+                <cellValueFactory>
+                    <PropertyValueFactory property="cordY" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+        <Button fx:id="toPrimary" onAction="#switchToPrimary" text="Od nowa" />
+    </children>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+</VBox>
