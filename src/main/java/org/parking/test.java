@@ -22,4 +22,13 @@ public class test {
         this.score = score;
         this.zoneId = parkingLot.getZoneId();
     }
+
+    @Override
+    public String toString() {
+        return "test{" +
+                "id=" + id +
+                ", score=" + score +
+                ", zoneId=" + zoneId +
+                '}';
+    }
 }

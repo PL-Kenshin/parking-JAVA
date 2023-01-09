@@ -3,7 +3,9 @@ package org.parking;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.*;
 
 public class MapGenerator extends JPanel {
@@ -18,6 +20,7 @@ public class MapGenerator extends JPanel {
     private static List<ParkingLot> parkings;
     private static List<ParkingLot> allParkings;
     private static List<Zone> zones;
+    private static List<test> best;
 
     private static Integer userX;
     private static Integer userY;
@@ -89,8 +92,13 @@ public class MapGenerator extends JPanel {
 
 
         g.setColor(new Color(0x00FF00));
-        for(int i =0; i<parkings.toArray().length;i++){
+        for(int i = 0; i<parkings.toArray().length;i++){
             if(zones.get(parkings.get(i).getZoneId()).getCordX() == posX && zones.get(parkings.get(i).getZoneId()).getCordY() == posY){
+                for(int j = 0; j < best.size(); j++){
+                    if(best.get(j).getId() == parkings.get(i).getParkingLotId()){
+                        g.setColor(new Color(0x00FFFF));
+                    }
+                }
                 g.fillOval(x+parkings.get(i).getCordX(),y+parkings.get(i).getCordY(),5,5);
             }
         }
@@ -145,12 +153,13 @@ public class MapGenerator extends JPanel {
         g.setStroke(tmpS);
     }
 
-    public static void main(List<ParkingLot> pk,List<ParkingLot>apk, List<Zone> zn, Integer x, Integer y) {
+    public static void main(List<ParkingLot> pk,List<ParkingLot>apk,List<test> items, List<Zone> zn, Integer x, Integer y) {
         parkings = pk;
         allParkings = apk;
         zones = zn;
         userX = x;
         userY = y;
+        best = items.stream().sorted(Comparator.comparingInt(test::getScore).reversed()).limit(3).collect(Collectors.toList());;
 
         MapGenerator p = new MapGenerator();
 
@@ -183,16 +192,20 @@ public class MapGenerator extends JPanel {
         g.fillRect(x2+10,y2+14,10,10);
         g.setColor(new Color(0x00FF00));
         g.fillRect(x2+10,y2+26,10,10);
-        g.setColor(new Color(0x505050));
+        g.setColor(new Color(0x00FFFF));
         g.fillRect(x2+10,y2+38,10,10);
+        g.setColor(new Color(0x505050));
+        g.fillRect(x2+10,y2+50,10,10);
 
         g.setColor(new Color(0xFFFFFF));
         g.drawString("Legenda",x2+10,y2+12);
 
         g.drawString("- Twoja pozycja",x2+22,y2+24);
         g.drawString("- Lokalizacje zalecanych parkingów",x2+22,y2+36);
-        g.drawString("- Lokalizacje parkingów",x2+22,y2+48);
-        g.drawString("niespełniających kryteriow", x2+30,y2+60);
+        g.drawString("- Lokalizacje TOP3 parkingów",x2+22,y2+48);
+
+        g.drawString("- Lokalizacje parkingów",x2+22,y2+60);
+        g.drawString("niespełniających kryteriow", x2+28,y2+72);
 
         // Set values to previous when done.
         g.setColor(tmpC);

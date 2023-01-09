@@ -34,7 +34,7 @@ public class ResultController implements Initializable {
             );
             items.add(new test(parking, score));
         }
-        MapGenerator.main(parkings,allParkings, zones, x,y);
+        MapGenerator.main(parkings,allParkings,items, zones, x,y);
     }
 
     private static ObservableList<test> items = FXCollections.observableArrayList();

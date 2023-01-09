@@ -47,12 +47,10 @@ public class SecondaryController implements Initializable {
 
         var zones = data.generateZones(37,selectedCity.getText());
         var parkings = data.generateParkingLots(zones);
-        System.out.println(parkings);
         var choices = getSelected();
 
         int cordX = Integer.parseInt(this.cordX.getText());
         int cordY = Integer.parseInt(this.cordY.getText());
-        System.out.println(cordX + " " + cordY);
 
 
         var satisfiable = parkings.stream()
