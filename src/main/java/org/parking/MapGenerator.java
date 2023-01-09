@@ -190,9 +190,9 @@ public class MapGenerator extends JPanel {
 
         g.setColor(new Color(0xFF0000));
         g.fillRect(x2+10,y2+14,10,10);
-        g.setColor(new Color(0x00FF00));
-        g.fillRect(x2+10,y2+26,10,10);
         g.setColor(new Color(0x00FFFF));
+        g.fillRect(x2+10,y2+26,10,10);
+        g.setColor(new Color(0x00FF00));
         g.fillRect(x2+10,y2+38,10,10);
         g.setColor(new Color(0x505050));
         g.fillRect(x2+10,y2+50,10,10);
@@ -201,9 +201,8 @@ public class MapGenerator extends JPanel {
         g.drawString("Legenda",x2+10,y2+12);
 
         g.drawString("- Twoja pozycja",x2+22,y2+24);
-        g.drawString("- Lokalizacje zalecanych parkingów",x2+22,y2+36);
-        g.drawString("- Lokalizacje TOP3 parkingów",x2+22,y2+48);
-
+        g.drawString("- Lokalizacje TOP3 parkingów",x2+22,y2+36);
+        g.drawString("- Lokalizacje zalecanych parkingów",x2+22,y2+48);
         g.drawString("- Lokalizacje parkingów",x2+22,y2+60);
         g.drawString("niespełniających kryteriow", x2+28,y2+72);
 

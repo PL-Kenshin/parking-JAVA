@@ -81,6 +81,6 @@ public class SecondaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         selectedCity.setText(PrimaryController.getUser().getSelectedCity());
-        cordX.setRestrict("[0-9]");
+        cordX.setRestrict("-?[0-9]");
     }
 }

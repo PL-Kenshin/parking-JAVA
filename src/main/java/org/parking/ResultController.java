@@ -46,6 +46,6 @@ public class ResultController implements Initializable {
 
     public void switchToPrimary() throws IOException {
         MapGenerator.closeWindow();
-        App.setRoot("secondary");
+        App.setRoot("primary");
     }
 }
