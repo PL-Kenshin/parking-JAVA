@@ -12,7 +12,6 @@ public class DummyDataGenerator {
     }
 
     public List<Zone> generateZones(int numberOfZones, String city) {
-        Random rand = new Random();
         final int ZONES_PER_ROW = (int) Math.round(Math.sqrt(numberOfZones));
         List<Zone> zones = new ArrayList<>(numberOfZones);
 

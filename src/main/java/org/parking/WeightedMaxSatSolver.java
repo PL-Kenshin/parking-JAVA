@@ -28,9 +28,9 @@ public class WeightedMaxSatSolver {
         solver.setExpectedNumberOfClauses(ExpectedNumberOfClauses);
     }
 
-    public void addClause(int weight,int id) throws ContradictionException {
+    public void addClause(long weight,int id) throws ContradictionException {
         var clause = generateClausule(id);
-        weightedMaxSatDecorator.addSoftClause(weight,new VecInt(clause));
+        weightedMaxSatDecorator.addSoftClause((int)weight,new VecInt(clause));
     }
 
     public Optional<List> model() throws TimeoutException {

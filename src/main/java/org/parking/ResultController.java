@@ -17,24 +17,25 @@ public class ResultController implements Initializable {
     @FXML
     private TableView topList;
 
-    public static void  initTable(List<ParkingLot> parkings,List<ParkingLot> allParkings ,List<Zone> zones, int x, int y, List results){
-        for (var parking:parkings) {
-            Zone zone =zones.get(parking.getZoneId());
-            Integer score = Math.toIntExact(
+    public static void initTable(List<ParkingLot> parkings, List<ParkingLot> allParkings, List<Zone> zones, int x, int y, List results) {
+        for (var parking : parkings) {
+            Zone zone = zones.get(parking.getZoneId());
+            long score =
                     Math.round(
-                        (
-                                1000 * zone.getAttractivenessRatio()
-                        )
-                                /
-                        (
-                                Math.abs(x - zone.getCordX()) +
-                                Math.abs(y - zone.getCordY())
-                        )
-                    )
-            );
+                            (
+                                    1000 * zone.getAttractivenessRatio() + (parking.getFreeSpaces() * zone.getOccupiedRatio())
+                            )
+                                    /
+                                    (
+                                            Math.max(Math.abs(x - zone.getCordX()) +
+                                                    Math.abs(y - zone.getCordY()), 1
+                                            )
+                                    )
+                    );
+
             items.add(new test(parking, score));
         }
-        MapGenerator.main(parkings,allParkings,items, zones, x,y);
+        MapGenerator.main(parkings, allParkings, items, zones, x, y);
     }
 
     private static ObservableList<test> items = FXCollections.observableArrayList();

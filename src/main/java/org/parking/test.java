@@ -2,14 +2,14 @@ package org.parking;
 
 public class test {
     private Integer id;
-    private Integer score;
+    private long score;
     private Integer zoneId;
 
     public Integer getId() {
         return id;
     }
 
-    public Integer getScore() {
+    public long getScore() {
         return score;
     }
 
@@ -17,7 +17,7 @@ public class test {
         return zoneId;
     }
 
-    public test(ParkingLot parkingLot,Integer score) {
+    public test(ParkingLot parkingLot,long score) {
         this.id = parkingLot.getParkingLotId();
         this.score = score;
         this.zoneId = parkingLot.getZoneId();

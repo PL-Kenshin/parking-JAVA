@@ -159,7 +159,7 @@ public class MapGenerator extends JPanel {
         zones = zn;
         userX = x;
         userY = y;
-        best = items.stream().sorted(Comparator.comparingInt(test::getScore).reversed()).limit(3).collect(Collectors.toList());;
+        best = items.stream().sorted(Comparator.comparingLong(test::getScore).reversed()).limit(3).collect(Collectors.toList());;
 
         MapGenerator p = new MapGenerator();
 
